@@ -314,9 +314,9 @@ This project was developed as part of an academic assessment for PROG5121. All c
 
 If you have any questions about this project, please contact:
 
-**Student Name:** Khanyisa Ntsako Shikwambana 
-**Student Number:** st10476385  
-**Email:** st10476385@rcconnect.edu.za 
+- **Student Name:** Khanyisa Ntsako Shikwambana 
+- **Student Number:** st10476385  
+- **Email:** st10476385@rcconnect.edu.za 
 
 ---
 
