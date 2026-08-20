@@ -18,7 +18,6 @@
 - [Application Flow](#application-flow)
 - [Code Structure](#code-structure)
 - [Validation Rules](#validation-rules)
-- [Commit History](#commit-history)
 - [Citations and References](#citations-and-references)
 - [YouTube Presentation](#youtube-presentation)
 - [Acknowledgements](#acknowledgements)
@@ -237,21 +236,6 @@ graph TD
 
 ---
 
-##  Commit History
-
-This project was developed with **version control** following the assignment requirements. The commit history includes the following milestones:
-
-| Commit | Message | Date |
-|--------|---------|------|
-| 1 | `Initial project setup: Create Login class and project structure` | [Date] |
-| 2 | `Implement username validation (checkUserName)` | [Date] |
-| 3 | `Implement password complexity validation with regex` | [Date] |
-| 4 | `Implement cell phone number validation for SA (+27)` | [Date] |
-| 5 | `Implement registration and login logic` | [Date] |
-| 6 | `Create main console interface (ChatAppPart1)` | [Date] |
-| 7 | `Add JUnit 5 unit tests for all validation methods` | [Date] |
-
----
 
 ##  References
 
