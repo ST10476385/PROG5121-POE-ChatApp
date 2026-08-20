@@ -253,43 +253,43 @@ This project was developed with **version control** following the assignment req
 
 ---
 
-##  Citations and References
+##  References
 
-All external resources used in the development of this project are credited below.
 
-### Regular Expressions (Password Validation)
 
-- **GeeksforGeeks. (2026)** *Regular Expressions in Java*. Available at: [https://www.geeksforgeeks.org/regular-expressions-in-java/](https://www.geeksforgeeks.org/regular-expressions-in-java/) (Accessed: 20 August 2026).
+GeeksforGeeks. (2026) *Regular Expressions in Java*. Available at: https://www.geeksforgeeks.org/regular-expressions-in-java/ (Accessed: 20 August 2026).
 
-### Regular Expressions (Cell Phone Validation)
+GitHub. (2026) *GitHub Documentation*. Available at: https://docs.github.com/ (Accessed: 20 August 2026).
 
-- **Stack Overflow. (2026)** *Regular expression to match South African cell phone numbers*. Available at: [https://stackoverflow.com/questions/16699007/](https://stackoverflow.com/questions/16699007/) (Accessed: 20 August 2026).
+GitHub Desktop. (2026) *GitHub Desktop Tutorial*. Available at: https://www.youtube.com/watch?v=bUgFv1Y5LJw (Accessed: 20 August 2026).
 
-### Additional References
+GitHub Actions Tutorial. (2026) *CI/CD with GitHub Actions*. Available at: https://www.youtube.com/watch?v=oz0Qd5H4Onk (Accessed: 20 August 2026).
 
-- **Smith, J. (2023)** *Java Regex Tutorial*. Available at: [https://example.com/java-regex](https://example.com/java-regex) (Accessed: 20 August 2026).
+JUnit 5. (2026) *JUnit 5 User Guide*. Available at: https://junit.org/junit5/docs/current/user-guide/ (Accessed: 20 August 2026).
 
-### GitHub and Version Control
+JUnit Tutorial. (2026) *JUnit in NetBeans*. Available at: https://www.youtube.com/watch?v=MOhiM2SXZI0 (Accessed: 20 August 2026).
 
-- **GitHub. (2026)** *GitHub Documentation*. Available at: [https://docs.github.com/](https://docs.github.com/) (Accessed: 20 August 2026).
+NetBeans IDE. (2026) *NetBeans Downloads*. Available at: https://netbeans.org/downloads/ (Accessed: 20 August 2026).
 
-- **GitHub Desktop. (2026)** *GitHub Desktop Tutorial*. Available at: [https://www.youtube.com/watch?v=bUgFv1Y5LJw](https://www.youtube.com/watch?v=bUgFv1Y5LJw) (Accessed: 20 August 2026).
+PROG5121 Module Outline. (2026) Available at: https://advtechonline.sharepoint.com/:w:/r/sites/TertiaryStudents/_layouts/15/Doc.aspx?sourcedoc=%7B5B770B77-2908-402A-A5DD-30ED47D82E66%7D&file=PROG5121_MO.docx&action=default&mobileredirect=true (Accessed: 20 August 2026).
 
-### Unit Testing with JUnit
+QuickBlox. (2026) *Beginner's Guide to Chat App Architecture*. Available at: https://quickblox.com/blog/beginners-guide-to-chat-app-architecture/ (Accessed: 20 August 2026).
 
-- **JUnit 5. (2026)** *JUnit 5 User Guide*. Available at: [https://junit.org/junit5/docs/current/user-guide/](https://junit.org/junit5/docs/current/user-guide/) (Accessed: 20 August 2026).
+Smith, J. (2023) *Java Regex Tutorial*. Available at: https://example.com/java-regex (Accessed: 20 August 2026).
 
-- **JUnit Tutorial. (2026)** *JUnit in NetBeans*. Available at: [https://www.youtube.com/watch?v=MOhiM2SXZI0](https://www.youtube.com/watch?v=MOhiM2SXZI0) (Accessed: 20 August 2026).
+Stack Overflow. (2026) *Regular expression to match South African cell phone numbers*. Available at: https://stackoverflow.com/questions/16699007/ (Accessed: 20 August 2026).
 
-### Automated Testing with GitHub Actions
+### Prescribed Textbooks
 
-- **GitHub Actions Tutorial. (2026)** *CI/CD with GitHub Actions*. Available at: [https://www.youtube.com/watch?v=oz0Qd5H4Onk](https://www.youtube.com/watch?v=oz0Qd5H4Onk) (Accessed: 20 August 2026).
+Farrell, J. (2019) *Java Programming*. 9th edn. Course Technology, Cengage Learning.
 
-### Chat Application Architecture
+Farrell, J. (2024) *Java Programming*. 10th edn. Course Technology, Cengage Learning.
 
-- **QuickBlox. (2026)** *Beginner's Guide to Chat App Architecture*. Available at: [https://quickblox.com/blog/beginners-guide-to-chat-app-architecture/](https://quickblox.com/blog/beginners-guide-to-chat-app-architecture/) (Accessed: 20 August 2026).
+### Recommended Readings
 
----
+Burd, B. (2022) *Java for Dummies*. 8th edn. John Wiley and Sons. ISBN: 978-1119861645.
+
+Cadenehead, R. (2020) *Sams Teach Yourself Java in 21 Days*. 8th edn. Sams Publishing. ISBN: 978-0672337956.
 
 ##  YouTube Presentation
 
