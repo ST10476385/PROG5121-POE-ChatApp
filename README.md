@@ -149,6 +149,7 @@ Enter your username: kyl_1
 Enter your password: Ch&&sec@ke99!
 Welcome John, Doe it is great to see you again.
 ```
+<img width="1866" height="751" alt="image" src="https://github.com/user-attachments/assets/91317678-4c16-4f66-a1bd-f8e08ef697c9" />
 
 ---
 
@@ -165,14 +166,19 @@ Welcome John, Doe it is great to see you again.
 mvn test
 ```
 
+
 ### Expected Test Output
 
 All tests should pass with a **green bar**:
 
 ```
-Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0
 BUILD SUCCESS
 ```
+<img width="1880" height="761" alt="image" src="https://github.com/user-attachments/assets/72f723af-50f6-4853-b70b-04ecb0bb97af" />
+
+<img width="1896" height="755" alt="image" src="https://github.com/user-attachments/assets/da1ee222-d190-4fe5-a8e4-c1422450ad4c" />
+
 
 ---
 
