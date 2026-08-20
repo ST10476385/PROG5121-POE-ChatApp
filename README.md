@@ -103,7 +103,7 @@ ChatApp-Part1/
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/PROG5121-Part1-ChatApp-st10476385.git
+git clone https://github.com/yourusername/[PROG5121-Part1-ChatApp-st10476385.git](https://github.com/ST10476385/PROG5121-POE-ChatApp.git)
 cd PROG5121-Part1-ChatApp-st10476385
 ```
 
