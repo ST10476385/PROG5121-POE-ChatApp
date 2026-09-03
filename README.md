@@ -22,11 +22,8 @@
 - [How to Run Unit Tests](#how-to-run-unit-tests)
 - [Application Flow](#application-flow)
 - [Validation Rules](#validation-rules)
-- [Commit History](#commit-history)
 - [Citations and References](#citations-and-references)
-- [YouTube Presentation](#youtube-presentation)
-- [Acknowledgements](#acknowledgements)
-
+  
 ---
 
 ##  Project Overview
@@ -212,61 +209,7 @@ The registration process validates each input in order:
 
 
 
-##  Citations and References
 
-All external resources used in the development of this project are credited below.
-
-### Regular Expressions (Password Validation)
-
-**GeeksforGeeks. (2026)** *Regular Expressions in Java*. Available at: https://www.geeksforgeeks.org/regular-expressions-in-java/ (Accessed: 20 August 2026).
-
-### Regular Expressions (Cell Phone Validation)
-
-**Stack Overflow. (2026)** *Regular expression to match South African cell phone numbers*. Available at: https://stackoverflow.com/questions/16699007/ (Accessed: 20 August 2026).
-
-### Additional References
-
-**Smith, J. (2023)** *Java Regex Tutorial*. Available at: https://example.com/java-regex (Accessed: 20 August 2026).
-
-### GitHub and Version Control
-
-**GitHub. (2026)** *GitHub Documentation*. Available at: https://docs.github.com/ (Accessed: 20 August 2026).
-
-**GitHub Desktop. (2026)** *GitHub Desktop Tutorial*. Available at: https://www.youtube.com/watch?v=bUgFv1Y5LJw (Accessed: 20 August 2026).
-
-### Unit Testing with JUnit
-
-**JUnit 5. (2026)** *JUnit 5 User Guide*. Available at: https://junit.org/junit5/docs/current/user-guide/ (Accessed: 20 August 2026).
-
-**JUnit Tutorial. (2026)** *JUnit in NetBeans*. Available at: https://www.youtube.com/watch?v=MOhiM2SXZI0 (Accessed: 20 August 2026).
-
-### Automated Testing with GitHub Actions
-
-**GitHub Actions Tutorial. (2026)** *CI/CD with GitHub Actions*. Available at: https://www.youtube.com/watch?v=oz0Qd5H4Onk (Accessed: 20 August 2026).
-
-### Chat Application Architecture
-
-**QuickBlox. (2026)** *Beginner's Guide to Chat App Architecture*. Available at: https://quickblox.com/blog/beginners-guide-to-chat-app-architecture/ (Accessed: 20 August 2026).
-
-### Prescribed Textbooks
-
-**Farrell, J. (2019)** *Java Programming*. 9th edn. Course Technology, Cengage Learning.
-
-**Farrell, J. (2024)** *Java Programming*. 10th edn. Course Technology, Cengage Learning.
-
-### Recommended Readings
-
-**Burd, B. (2022)** *Java for Dummies*. 8th edn. John Wiley and Sons. ISBN: 978-1119861645.
-
-**Cadenehead, R. (2020)** *Sams Teach Yourself Java in 21 Days*. 8th edn. Sams Publishing. ISBN: 978-0672337956.
-
-### Software and System Requirements
-
-**NetBeans IDE.** Available at: https://netbeans.org/downloads/ (Accessed: 20 August 2026).
-
-### Module Outline
-
-**PROG5121 Module Outline.** Available at: https://advtechonline.sharepoint.com/:w:/r/sites/TertiaryStudents/_layouts/15/Doc.aspx?sourcedoc=%7B5B770B77-2908-402A-A5DD-30ED47D82E66%7D&file=PROG5121_MO.docx&action=default&mobileredirect=true (Accessed: 20 August 2026).
 
 ---
 ### References
@@ -313,15 +256,6 @@ All external resources used in the development of this project are credited belo
 
 ---
 
-##  Acknowledgements
-
-I would like to thank:
-
-- My lecturer for providing clear instructions and guidance.
-- The open-source community for providing valuable resources and tutorials.
-
----
-
 ##  Disclaimer
 
 This project was developed as part of an academic assessment for PROG5121. All code is original work except where explicitly credited. External resources are cited appropriately in the code and in this README file.
@@ -338,13 +272,6 @@ If you have any questions about this project, please contact:
 
 ---
 
-##  Quick Links
-
-- **GitHub Repository:** [https://github.com/ST10476385/PROG5121-POE-ChatApp](https://github.com/ST10476385/PROG5121-POE-ChatApp)
-- **GitHub Sign Up:** [https://github.com/](https://github.com/)
-
-
----
 
 **© 2026 – PROG5121 Chat App Part 1**  
 *All rights reserved.*
