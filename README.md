@@ -180,6 +180,7 @@ The registration process validates each input in order:
 
 ---
 
+
 ##  Validation Rules
 
 ### Username Rules
@@ -204,12 +205,6 @@ The registration process validates each input in order:
 |-----------|---------------|-----------------|
 | Starts with `+27` | `+27838968976` | `08966553` |
 | Followed by 1–10 digits | `+27838968976` | `+271234567890123` |
-
----
-
-
-
-
 
 ---
 ### References
