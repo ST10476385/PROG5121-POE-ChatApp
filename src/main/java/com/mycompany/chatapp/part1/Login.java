@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  */
  
 //This is my Login class, it basically does 2 things, registers a new user (checking their details are correct first)
-  // and then lets them log back in with the same details. I kept everything in one class since the
+  //and then lets them log back in with the same details. I kept everything in one class since the
 //assignment said to make a Login class with all these methods in it.
 
 public class Login {  // This class handles all registration and login functionality
@@ -37,7 +37,7 @@ public class Login {  // This class handles all registration and login functiona
  
     //It checks if the username has an underscore in it somewhere and isn't longer than 5 characters.
        // I used .contains() to check for the underscore because it's the easiest way to check if a character is
-            // anywhere in a string.
+            //anywhere in a string.
     public boolean checkUserName(String username) {
        
         if (username == null)
