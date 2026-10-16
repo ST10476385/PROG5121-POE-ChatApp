@@ -17,8 +17,8 @@ import java.util.regex.Pattern;
 //and stores the messages in a JSON file. I kept it all in one class like the assignment asked.
 public class Message {
 
-    // These are the details for each message, I made them private so they can
-    //only be changed through my methods.
+    // These are the details for each message, I made them private so they can only be changed through my methods.
+    
     private String messageID;
     private int messageNumber;
     private String recipient;
@@ -32,36 +32,48 @@ public class Message {
     private static int totalMessagesSent = 0;
     private static int messageCounter = -1;
 
-    //I'm keeping all the messages in this string so printMessages() can show them
-    //all at the end of the program run.
+    //I'm keeping all the messages in this string so printMessages() can show them all at the end of the program run.
+    
     private static String allMessages = "";
 
-    public Message(String recipient, String messageText) {
+    public Message(String recipient, String messageText)
+    
+    {
         //I make the ID first because the hash needs it.
         this.messageID = generateMessageID();
         //messageNumber only goes up each time a new Message is made.
+        
+        
         this.messageNumber = ++messageCounter;
         this.recipient = recipient;
         this.messageText = messageText;
+        
+        
         //The hash is made last because it needs everything else.
         this.messageHash = createMessageHash();
     }
 
     //I made this method to generate the 10-digit random number. I used Random
     //and a loop that adds one digit at a time until I have 10 digits.
-    private String generateMessageID() {
+    private String generateMessageID() 
+    {
         Random random = new Random();
         String id = "";
-        for (int i = 0; i < 10; i++) {
+        
+        for (int i = 0; i < 10; i++)
+        
+        {
             id = id + random.nextInt(10);
         }
         return id;
     }
 
-    //This just checks the ID isn't longer than 10 characters.
-    //It should never fail because generateMessageID() always makes exactly 10.
-    public boolean checkMessageID() {
-        if (messageID == null) {
+    //This just checks the ID isn't longer than 10 characters. It should never fail because generateMessageID() always makes exactly 10.
+   
+    public boolean checkMessageID()
+    {
+        if (messageID == null) 
+        {
             return false;
         }
         return messageID.length() <= 10;
@@ -76,7 +88,9 @@ public class Message {
         }
         //The pattern is +27 followed by 1 to 10 digits.
         String cellPattern = "^\\+27[0-9]{1,10}$";
-        if (Pattern.matches(cellPattern, recipient)) {
+        if (Pattern.matches(cellPattern, recipient))
+        
+        {
             return "Cell phone number successfully captured.";
         } else {
             return "Cell phone number is incorrectly formatted or does not contain an international code. Please correct the number and try again.";
@@ -86,9 +100,13 @@ public class Message {
     //This makes the message hash. It's made up of the first 2 digits of the ID,
     //a colon, the message number, another colon, and the first and last words
     //of the message. Everything is in caps.
-    public String createMessageHash() {
+    public String createMessageHash()
+    
+    {
 
-        if (messageText == null || messageText.trim().equals("")) {
+        if (messageText == null || messageText.trim().equals(""))
+        
+        {
             return "";
         }
 
@@ -115,14 +133,18 @@ public class Message {
 
     //This lets the user pick if they want to send, store, or disregard the message.
     //1 = send, 2 = disregard, 3 = store for later.
-    public String sentMessage(int choice) {
+    public String sentMessage(int choice) 
+    
+    {
 
         if (choice == 1) {
             //Only add to the total when the user actually sends it.
             totalMessagesSent++;
             storeMessage();
             return "Message successfully sent.";
-        } else if (choice == 2) {
+        } else if (choice == 2)
+        
+        {
             return "Press 0 to delete the message.";
         } else if (choice == 3) {
             storeMessage();
@@ -133,7 +155,9 @@ public class Message {
     }
 
     //This returns all the messages that were sent during the program run.
-    public static String printMessages() {
+    public static String printMessages() 
+    
+    {
         if (allMessages.equals("")) {
             return "No messages sent yet.";
         }
@@ -141,7 +165,9 @@ public class Message {
     }
 
     //This just gives back how many messages were actually sent.
-    public static int returnTotalMessages() {
+    public static int returnTotalMessages()
+    
+    {
         return totalMessagesSent;
     }
 
@@ -152,7 +178,7 @@ public class Message {
     public void storeMessage() {
 
         //I add the message to the running list every time storeMessage is called,
-        //so printMessages() can show all of them at the end.
+        //      so printMessages() can show all of them at the end.
         allMessages = allMessages
                 + "Message ID: " + messageID + "\n"
                 + "Message Hash: " + messageHash + "\n"
@@ -160,7 +186,7 @@ public class Message {
                 + "Message: " + messageText + "\n"
                 + "---\n";
 
-        //Build the JSON text for this one message.
+        //   Builds the JSON text for this one message.
         String json = "{\n"
                 + "  \"MessageID\": \"" + messageID + "\",\n"
                 + "  \"MessageNumber\": " + messageNumber + ",\n"
@@ -169,7 +195,7 @@ public class Message {
                 + "  \"MessageHash\": \"" + messageHash + "\"\n"
                 + "}\n";
 
-        //Write it to messages.json in the project folder using append mode.
+        //    Writes it to messages.json in the project folder using append mode.
         try {
             FileWriter writer = new FileWriter("messages.json", true);
             writer.write(json);
