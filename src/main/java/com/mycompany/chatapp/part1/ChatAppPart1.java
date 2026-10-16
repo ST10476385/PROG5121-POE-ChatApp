@@ -9,13 +9,14 @@ import java.util.Scanner;
  */
 public class ChatAppPart1 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
 
         Scanner input = new Scanner(System.in);
         Login login = new Login();
 
-        //Starting off with registration, asking for all the details one at a time
-        //so it's easier to follow what's happening.
+        //Starting off with registration, asking for all the details one at a time so it's easier to follow what's happening.
+        
         System.out.println("=== Registration ===");
         System.out.print("Enter a username ( must contain _ and be 5 characters or less): ");
         String username = input.nextLine();
@@ -39,7 +40,8 @@ public class ChatAppPart1 {
 
         //It only moves on to login if registration actually succeeded, checking the start of the message
         //since that's the easiest way to tell if it went through without adding another return type.
-        if (registerResult.startsWith("Username successfully captured")) {
+        if (registerResult.startsWith("Username successfully captured"))
+        {
 
             System.out.println();
             System.out.println("=== Login ===");
@@ -55,7 +57,8 @@ public class ChatAppPart1 {
 
             //Only move on to the QuickChat menu if login was actually successful.
             //I added this check so random people can't just skip the login part.
-            if (login.isLoggedIn()) {
+            if (login.isLoggedIn())
+            {
 
                 System.out.println();
                 System.out.println("Welcome to QuickChat.");
@@ -63,7 +66,8 @@ public class ChatAppPart1 {
                 //This boolean keeps the menu running until the user picks quit.
                 boolean running = true;
 
-                while (running) {
+                while (running)
+                {
 
                     System.out.println();
                     System.out.println("--- Menu ---");
@@ -77,7 +81,8 @@ public class ChatAppPart1 {
                     String menuInput = input.nextLine();
                     int menuChoice;
 
-                    try {
+                    try
+                    {
                         menuChoice = Integer.parseInt(menuInput);
                     } catch (NumberFormatException e) {
                         System.out.println("Please enter a number (1, 2 or 3).");
@@ -87,17 +92,34 @@ public class ChatAppPart1 {
                     if (menuChoice == 1) {
                         //This is where the send messages feature lives.
                         sendMessages(input);
-                    } else if (menuChoice == 2) {
+                    }
+                    
+                    else if (menuChoice == 2)
+                    
+                    {
                         System.out.println("Coming Soon.");
-                    } else if (menuChoice == 3) {
+                    }
+                    
+                    else if (menuChoice == 3) {
                         System.out.println("Goodbye!");
                         running = false;
-                    } else {
+                    } 
+                    
+                    else {
                         System.out.println("Invalid option. Please choose 1, 2 or 3.");
                     }
                 }
+                
+                
+           
+            
+            
             }
+            
+            
         }
+        
+        
 
         input.close();
     }
@@ -111,14 +133,18 @@ public class ChatAppPart1 {
         String numInput = input.nextLine();
         int numMessages;
 
-        try {
+        try
+        
+        {
             numMessages = Integer.parseInt(numInput);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException e)
+        {
             System.out.println("Please enter a valid number.");
             return;
         }
 
-        if (numMessages <= 0) {
+        if (numMessages <= 0)
+        {
             System.out.println("Number must be more than 0.");
             return;
         }
@@ -148,16 +174,20 @@ public class ChatAppPart1 {
                 }
             }
 
-            // -------- Get the message text --------
+            // -------- Get the message text ----------------------------
             //Same idea, keep asking until the length is fine.
             String messageText = "";
             boolean messageOk = false;
 
-            while (!messageOk) {
+            while (!messageOk) 
+            
+            {
                 System.out.print("Enter your message (max 250 characters): ");
                 messageText = input.nextLine();
 
-                if (messageText.length() > 250) {
+                if (messageText.length() > 250) 
+                
+                {
                     //I work out how many characters over they are so the error is specific.
                     int excess = messageText.length() - 250;
                     System.out.println("Message exceeds 250 characters by " + excess + "; please reduce the size.");
@@ -165,6 +195,8 @@ public class ChatAppPart1 {
                     System.out.println("Message ready to send.");
                     messageOk = true;
                 }
+                
+                
             }
 
             // -------- Make the actual Message object --------
@@ -180,6 +212,7 @@ public class ChatAppPart1 {
             System.out.println();
             System.out.println("What would you like to do?");
             System.out.println("1) Send Message");
+            
             System.out.println("2) Disregard Message");
             System.out.println("3) Store Message to send later");
             System.out.print("Choose an option: ");
@@ -189,12 +222,14 @@ public class ChatAppPart1 {
 
             try {
                 sendChoice = Integer.parseInt(sendInput);
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException e) 
+            
+            {
                 System.out.println("Invalid input. Message disregarded.");
                 continue;
             }
 
-            //FIXED: was sendMessage before, now it matches the method in Message.java
+            
             String sendResult = msg.sentMessage(sendChoice);
             System.out.println(sendResult);
         }
