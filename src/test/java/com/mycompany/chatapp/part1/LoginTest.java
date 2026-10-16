@@ -15,9 +15,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class LoginTest {
 
-    // == assertEquals TESTS ==
+    // assertEquals TESTS 
 
-    // Test: Username correctly formatted (kyl_1) -> should result in successful registration and login
+    // It tests if Username correctly formatted (kyl_1): should result in successful registration and login
     @Test
     public void testUsernameCorrectlyFormatted_Flow() {
         Login login = new Login();
@@ -30,7 +30,7 @@ public class LoginTest {
         assertEquals("Welcome John, Doe it is great to see you again.", login.returnLoginStatus());
     }
 
-    // Test: Username incorrectly formatted (kyle!!!!!!!) -> should return the error message
+    // It tests if Username incorrectly formatted (kyle!!!!!!!):should return the error message
     @Test
     public void testUsernameIncorrectlyFormatted() {
         Login login = new Login();
@@ -42,7 +42,7 @@ public class LoginTest {
         
     }
 
-    // Test: Password meets complexity requirements (Ch&&sec@ke99!) -> should return success message
+    // It tests if Password meets complexity requirements (Ch&&sec@ke99!) :should return success message
     @Test
     public void testPasswordMeetsComplexity() {
         Login login = new Login();
@@ -60,7 +60,7 @@ public class LoginTest {
         
     }
 
-    // Test: Password does not meet complexity requirements (password) -> should return error message
+    // It tests if  Password does not meet complexity requirements (password) : should return error message
     @Test
     public void testPasswordDoesNotMeetComplexity() {
         Login login = new Login();
@@ -70,7 +70,7 @@ public class LoginTest {
                 + "contains at least eight characters, a capital letter, a number, and a special character.", msg);
     }
 
-    // Test: Cell phone correctly formatted (+27838968976) -> should return success message
+    // It tests if  Cell phone correctly formatted (+27838968976) : should return success message
     // Note: Your checkCellPhoneNumber expects +27 and exactly 1-10 digits after, which passes.
     @Test
     public void testCellPhoneCorrectlyFormatted() {
@@ -86,7 +86,7 @@ public class LoginTest {
         assertTrue(login.checkCellPhoneNumber("+27838968976"));
     }
 
-    // Test: Cell phone incorrectly formatted (08966553) -> should return error message
+    // It tests if Cell phone incorrectly formatted (08966553) : should return error message
     @Test
     public void testCellPhoneIncorrectlyFormatted() {
         Login login = new Login();
@@ -98,7 +98,7 @@ public class LoginTest {
 
     // == assertTrue or assertFalse TESTS ==
 
-    // Login Successful (correct credentials)
+    // It tests if Login Successful (correct credentials)
     @Test
     public void testLoginSuccessful() {
         Login login = new Login();
@@ -107,7 +107,7 @@ public class LoginTest {
         assertTrue(login.loginUser("kyl_1", "Ch&&sec@ke99!"));
     }
 
-    // Login Failed (wrong password)
+    // It tests if Login Failed (wrong password)
     @Test
     public void testLoginFailed() {
         Login login = new Login();
@@ -118,21 +118,21 @@ public class LoginTest {
         
     }
 
-    // Username correctly formatted (kyl_1) -> true
+    // It tests if Username correctly formatted (kyl_1) : true
     @Test
     public void testUsernameCorrectlyFormatted_Boolean() {
         Login login = new Login();
         assertTrue(login.checkUserName("kyl_1"));
     }
 
-    // Username incorrectly formatted (kyle!!!!!!!) -> false
+    // It tests if Username incorrectly formatted (kyle!!!!!!!) : false
     @Test
     public void testUsernameIncorrectlyFormatted_Boolean() {
         Login login = new Login();
         assertFalse(login.checkUserName("kyle!!!!!!!"));
     }
 
-    // Password meets complexity requirements (Ch&&sec@ke99!) -> true
+    // It tests if Password meets complexity requirements (Ch&&sec@ke99!) : true
     @Test
     public void testPasswordMeetsComplexity_Boolean() {
         Login login = new Login();
@@ -140,7 +140,7 @@ public class LoginTest {
         assertTrue(login.checkPasswordComplexity("Ch&&sec@ke99!"));
     }
 
-    // Password does not meet complexity requirements (password) -> false
+    // It tests if Password does not meet complexity requirements (password) :false
     @Test
     public void testPasswordDoesNotMeetComplexity_Boolean() {
         Login login = new Login();
@@ -149,7 +149,7 @@ public class LoginTest {
         
     }
 
-    // Cell phone correctly formatted (+27838968976) -> true
+    //It tests if Cell phone correctly formatted (+27838968976) : true
     @Test
     public void testCellPhoneCorrectlyFormatted_Boolean() {
         Login login = new Login();
@@ -158,7 +158,7 @@ public class LoginTest {
         
     }
 
-    // Cell phone incorrectly formatted (08966553) -> false
+    // It tests if Cell phone incorrectly formatted (08966553) : false
     @Test
     public void testCellPhoneIncorrectlyFormatted_Boolean() {
         Login login = new Login();
