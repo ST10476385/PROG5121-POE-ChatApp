@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  */
 
 //This is my Login class, it basically does 2 things, registers a new user (checking their details are correct first)
-//and then lets them log back in with the same details. I kept everything in one class since the
+//          and then lets them log back in with the same details. I kept everything in one class since the
 //assignment said to make a Login class with all these methods in it.
 public class Login {
 
@@ -23,16 +23,17 @@ public class Login {
     private String lastName;
 
     //This just remembers if the last login attempt worked or not
-    //I need this so returnLoginStatus() knows which message to send back.
+    //             I need this so returnLoginStatus() knows which message to send back.
     private boolean loginSuccessful;
 
-    public Login() {
+    public Login()
+    {
         // I Don't need to set anything here, the fields only get filled in once registerUser() runs successfully.
     }
 
     //It checks if the username has an underscore in it somewhere and isn't longer than 5 characters.
     // I used .contains() to check for the underscore because it's the easiest way to check if a character is
-    //anywhere in a string.
+    //            anywhere in a string.
     public boolean checkUserName(String username) {
         if (username == null)
         {
@@ -57,7 +58,7 @@ public class Login {
 
     // checks the cell number starts with +27 (SA country code) and that
     // whatever comes after that isn't more than 10 digits. I used the same
-    // Pattern.matches() approach as the password check above since it
+    //               Pattern.matches() approach as the password check above since it
     // already worked there.
     public boolean checkCellPhoneNumber(String cellPhoneNumber) {
         if (cellPhoneNumber == null) {
@@ -70,7 +71,7 @@ public class Login {
     }
 
     // this runs all 3 checks above in order and stops at the first one that fails, so the user knows
-    // exactly what to fix first instead ofgetting every error at once.
+    //               exactly what to fix first instead ofgetting every error at once.
     public String registerUser(String username, String password, String cellPhoneNumber,
                                String firstName, String lastName) {
 
@@ -100,8 +101,8 @@ public class Login {
     }
 
     //It checks whatever was typed in at login matches what got saved when the person registered.
-    //Used .equals() instead of == because that's how we are supposed to compare Strings in Java,
-    //== compares references not the actual text.
+    //Used .equals() instead of == because that's how we are supposed to compare Strings in Java, == compares references not the actual text.
+   
     public boolean loginUser(String enteredUsername, String enteredPassword) {
         if (username == null || password == null) {
             //this means nobody has registered yet so there's nothing to log into.
@@ -119,20 +120,27 @@ public class Login {
         if (loginSuccessful) {
             return "Welcome " + firstName + ", " + lastName + " it is great to see you again.";
         }
+        
+        
         else
+            
+            
         {
             return "Username or password incorrect, please try again.";
         }
     }
 
-    //This just returns whether the last login was successful or not,
-    //so main can decide whether to show the QuickChat menu or not.
-    public boolean isLoggedIn() {
+    //This just returns whether the last login was successful or not, so main can decide whether to show the QuickChat menu or not.
+    
+    public boolean isLoggedIn()
+    
+    {
         return loginSuccessful;
     }
 
     //I added these getters so Main can grab the name if it needs to print it somewhere else.
-    public String getFirstName() {
+    public String getFirstName()
+    {
         return firstName;
     }
 
@@ -140,4 +148,6 @@ public class Login {
     {
         return lastName;
     }
+    
+    
 }
