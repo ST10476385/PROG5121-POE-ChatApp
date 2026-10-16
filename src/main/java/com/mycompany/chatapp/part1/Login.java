@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  */
 
 //This is my Login class, it basically does 2 things, registers a new user (checking their details are correct first)
-//          and then lets them log back in with the same details. I kept everything in one class since the
+//       and then lets them log back in with the same details. I kept everything in one class since the
 //assignment said to make a Login class with all these methods in it.
 public class Login {
 
