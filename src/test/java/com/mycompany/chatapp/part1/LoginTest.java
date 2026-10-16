@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Unit tests for Part 1 – Registration and Login.
+ * Unit tests for Part 1 and Registration and Login.
  * 
  *
  * @author ST10476385 KN SHIKWAMBANA
@@ -21,9 +21,12 @@ public class LoginTest {
     @Test
     public void testUsernameCorrectlyFormatted_Flow() {
         Login login = new Login();
+        
         String regMsg = login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976", "John", "Doe");
+        
         assertEquals("Username successfully captured. Password successfully captured. Cell phone number successfully added.", regMsg);
         assertTrue(login.loginUser("kyl_1", "Ch&&sec@ke99!"));
+        
         assertEquals("Welcome John, Doe it is great to see you again.", login.returnLoginStatus());
     }
 
