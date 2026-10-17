@@ -9,7 +9,7 @@
 **Student Number:** ST10476385  
 **Module:** PROG5121  
 **Part 1 Submission Date:** 18 September 2026  
-**Part 2 Submission Date:** YOUR_PART_2_SUBMISSION_DATE_HERE
+**Part 2 Submission Date:** 19 October 2026
 
 **YouTube Presentation (Part 1 – Registration and Login):** https://youtu.be/FY2LNRlOIKI  
 **YouTube Presentation (Part 2 – Sending Messages):** YOUR_PART_2_LINK_HERE
