@@ -284,7 +284,8 @@ The badge at the top of this README shows whether the latest run passed.
 
 **GITHUB ACTIONS SCREENSHOT – add a screenshot of your green Actions run here:**
 
-<!-- Example: <img width="1900" height="900" alt="GitHub Actions green run" src="PASTE_IMAGE_LINK_HERE" /> -->
+<img width="1759" height="3120" alt="image" src="https://github.com/user-attachments/assets/6bb049e7-0367-4e20-ae3c-a6e9b4ee52d0" />
+
 
 ---
 
