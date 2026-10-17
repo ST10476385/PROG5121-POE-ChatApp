@@ -48,7 +48,7 @@ public class LoginTest {
         Login login = new Login();
         
         // @citation: Smith, J. (2023) Java Regex Tutorial. Available at: https://example.com/java-regex (Accessed: 20 August 2026).
-        // Tests a valid password through registration and directly verifies password complexity.
+// Tests a valid password through registration and directly verifies password complexity.
 // The Login class does not provide a separate password message method.
         Login login2 = new Login();
         String result = login2.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976", "John", "Doe");
