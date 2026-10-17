@@ -179,7 +179,7 @@ After a successful login the QuickChat menu starts. The Message IDs are random, 
 
 ```
 Welcome to QuickChat.
-How many messages do you wish to enter? 2
+How many messages do you wish to enter? 3
 
 --- Menu ---
 Option 1) Send Messages
@@ -187,7 +187,7 @@ Option 2) Show recently sent messages
 Option 3) Quit
 Choose an option: 1
 
---- Message 1 of 2 ---
+--- Message 1 of 3 ---
 Enter recipient cell number (with international code, example +27718693002): +27718693002
 Cell phone number successfully captured.
 Enter your message (max 250 characters): Hi Mike, can you join us for dinner tonight?
@@ -210,7 +210,15 @@ Message successfully sent.
 
 **PART 2 SCREENSHOTS – add your run screenshots here (drag and drop them into this file on GitHub):**
 
-<!-- Example: <img width="1335" height="1078" alt="Part 2 run" src="PASTE_IMAGE_LINK_HERE" /> -->
+<img width="1335" height="1078" alt="image" src="https://github.com/user-attachments/assets/9991fd03-edad-4d17-9ae8-2037a9f63d24" />
+
+<img width="1332" height="1078" alt="image" src="https://github.com/user-attachments/assets/3d2f553b-f4ee-443b-952a-3c31911633d6" />
+
+<img width="1357" height="1073" alt="image" src="https://github.com/user-attachments/assets/f45d0ebe-32e3-45b1-ab28-9ea3764a844a" />
+
+<img width="1410" height="1078" alt="image" src="https://github.com/user-attachments/assets/77ce9910-0b31-47cc-a9df-5635970ff0cb" />
+
+<img width="1346" height="1072" alt="image" src="https://github.com/user-attachments/assets/132060c4-4692-4a0a-acd1-6bafede906c9" />
 
 ---
 
@@ -236,12 +244,14 @@ Running com.mycompany.chatapp.part1.LoginTest
 Tests run: 14, Failures: 0, Errors: 0, Skipped: 0
 Running com.mycompany.chatapp.part1.MessageTest
 Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
-
 Tests run: 27, Failures: 0, Errors: 0, Skipped: 0
 BUILD SUCCESS
+
+
 ```
-<img width="1910" height="1025" alt="image" src="https://github.com/user-attachments/assets/7a4bb425-7e17-4ccb-b8a9-b1e874a68611" />
 <img width="1912" height="1016" alt="image" src="https://github.com/user-attachments/assets/9d7db0ea-91e7-480a-b51a-452249db3e8c" />
+<img width="1912" height="1015" alt="image" src="https://github.com/user-attachments/assets/22eaa9d5-46cf-4807-aa55-3aa0d86f93e3" />
+<img width="1886" height="777" alt="image" src="https://github.com/user-attachments/assets/cf7f31ef-0f02-4861-9900-75147f7843b5" />
 
 ### What the Message tests cover (Part 2)
 
@@ -256,7 +266,8 @@ BUILD SUCCESS
 
 **PART 2 TEST SCREENSHOT – add your 13/13 `MessageTest` screenshot here:**
 
-<!-- Example: <img width="1900" height="780" alt="MessageTest results" src="PASTE_IMAGE_LINK_HERE" /> -->
+<img width="1912" height="1015" alt="image" src="https://github.com/user-attachments/assets/eb042aee-be59-4461-92d8-85033a683069" />
+
 
 ---
 
@@ -360,6 +371,7 @@ Example of what the file looks like:
   }
 ]
 ```
+<img width="1352" height="1078" alt="image" src="https://github.com/user-attachments/assets/fa26a6e6-92ac-4b27-8b0b-2037d4848565" />
 
 Quotes and backslashes inside a message are escaped so they cannot break the JSON.
 
