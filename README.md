@@ -12,7 +12,7 @@
 **Part 2 Submission Date:** 19 October 2026
 
 **YouTube Presentation (Part 1 – Registration and Login):** https://youtu.be/FY2LNRlOIKI  
-**YouTube Presentation (Part 2 – Sending Messages):** YOUR_PART_2_LINK_HERE
+**YouTube Presentation (Part 2 – Sending Messages):** https://youtu.be/2U3F6mGnfsQ
 
 ---
 
@@ -434,7 +434,7 @@ https://youtu.be/FY2LNRlOIKI
 -  Showing `messages.json` and explaining how it is written
 -  Running and explaining the unit tests and the GitHub Actions run
 
-YOUR_PART_2_LINK_HERE
+https://youtu.be/2U3F6mGnfsQ
 
 ---
 
