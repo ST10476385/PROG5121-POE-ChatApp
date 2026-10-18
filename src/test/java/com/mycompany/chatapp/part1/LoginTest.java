@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author ST10476385 KN SHIKWAMBANA
  */
-public class LoginTest {
+public class LoginTest   {
 
     // assertEquals TESTS 
 
