@@ -159,7 +159,7 @@ public class ChatAppPart1 {
             System.out.println();
             System.out.println("--- Message " + (i + 1) + " of " + numMessages + " ---");
 
-            // -------- Get the recipient --------
+            // -------- Get the recipient ----------------------------------------------
             //I keep asking until the number passes the check, so nobody gets past with a bad number.
             String recipient = "";
             boolean recipientOk = false;
