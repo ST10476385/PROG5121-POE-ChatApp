@@ -36,4 +36,5 @@
         <maven.compiler.release>25</maven.compiler.release>
         <exec.mainClass>com.mycompany.chatapp.part1.ChatAppPart1</exec.mainClass>
     </properties>
+    <name>ChatApp-POE</name>
 </project>
