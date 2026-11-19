@@ -25,25 +25,25 @@ public class MessageManagerTest {
     {
         Message.clearArrays();
 
-        // Test Data Message 1 - Sent
+        // Tests Data Message 1 - Sent
         Message msg1 = new Message(0, "+27834557896", "Did you get the cake?");
         msg1.sentMessage(1);
 
-        // Test Data Message 2 - Stored (This is the longest message)
+        // Tests Data Message 2 - Stored (This is the longest message)
         Message msg2 = new Message(1, "+27838884567", "Where are you? You are late! I have asked you to be on time.");
         msg2.sentMessage(3);
 
-        // Test Data Message 3 - Disregard
+        // Tests Data Message 3 - Disregard
         Message msg3 = new Message(2, "+27834484567", "Yohoooo, I am at your gate.");
         msg3.sentMessage(2);
 
-        // Test Data Message 4 - Sent
+        // Tests Data Message 4 - Sent
         // The brief gives Message 4 a specific ID ("0838884567"). Since my app generates random IDs,
         // I use my second constructor to pass in that fixed ID.
         Message msg4 = new Message("0838884567", 3, "Developer", "It is dinner time !");
         msg4.sentMessage(1);
 
-        // Test Data Message 5 - Stored
+        // Tests Data Message 5 - Stored
         Message msg5 = new Message(4, "+27838884567", "Ok, I am leaving without you.");
         msg5.sentMessage(3);
     }
@@ -59,11 +59,14 @@ public class MessageManagerTest {
     @Test
     public void testSentMessagesArrayPopulated()
     {
-        assertTrue(Message.sentMessagesArray.contains("Did you get the cake?"));
-        assertTrue(Message.sentMessagesArray.contains("It is dinner time !"));
+        // The brief says assertEquals, so I check the exact size and the exact messages in order
+        // (before I only used contains).
+        assertEquals(2, Message.sentMessagesArray.size());
+        assertEquals("Did you get the cake?", Message.sentMessagesArray.get(0));
+        assertEquals("It is dinner time !", Message.sentMessagesArray.get(1));
     }
 
-    // Test 2: Display the longest Message
+    // Test 2: It display's the longest Message
     @Test
     public void testDisplayLongestMessage()
     {
@@ -71,15 +74,15 @@ public class MessageManagerTest {
         assertEquals(expected, Message.displayLongestMessage());
     }
 
-    // Test 3: Search for messageID
+    // Test 3: It Searches for the messageID
     @Test
     public void testSearchForMessageID()
     {
-        // Check success case
+        // It Checks success case
         String result = Message.searchByMessageID("0838884567");
-        assertTrue(result.contains("It is dinner time !"));
+        assertEquals("Message ID: 0838884567\nRecipient: Developer\nMessage: It is dinner time !", result);
 
-        // Check failure case (not found)
+        // It Checks failure case (not found)
         assertEquals("Message ID not found.", Message.searchByMessageID("0000000000"));
     }
 
@@ -87,58 +90,75 @@ public class MessageManagerTest {
     @Test
     public void testSearchAllMessagesForRecipient()
     {
-        // Check success case (finds both stored messages for this recipient)
+        // It Checks success case (finds both stored messages for this recipient)
         String result = Message.searchByRecipient("+27838884567");
-        assertTrue(result.contains("Where are you? You are late! I have asked you to be on time."));
-        assertTrue(result.contains("Ok, I am leaving without you."));
+        assertEquals("Message: Where are you? You are late! I have asked you to be on time.\n"
+                + "Message: Ok, I am leaving without you.\n", result);
 
-        // Check failure case (disregarded message should not show up, and fake number returns not found)
+        // It Checks failure case (disregarded message should not show up, and fake number returns not found)
         assertEquals("No messages found for this recipient.", Message.searchByRecipient("+27834484567"));
         assertEquals("No messages found for this recipient.", Message.searchByRecipient("+27000000000"));
     }
 
-    // Test 5: Delete a message using a message hash
+    // Test 5: It deletes a message using a message hash
     @Test
     public void testDeleteMessageByHash()
     {
-        // Grab the hash of Message 2 and delete it
+        // It GrabS the hash of Message 2 and delete it
         String hashToDelete = Message.messageHashesArray.get(1);
         String result = Message.deleteByHash(hashToDelete);
 
-        // Check that the app confirms the deletion and the message is gone
-        assertTrue(result.contains("successfully deleted"));
+        // It CheckS that the app confirms the deletion with the exact message from the brief and the message is gone
+        assertEquals("Message: \"Where are you? You are late! I have asked you to be on time.\" successfully deleted.", result);
         assertFalse(Message.allMessagesText.contains("Where are you? You are late! I have asked you to be on time."));
 
-        // Check that deleting a fake hash returns the not found message
+        // It CheckS that deleting a fake hash returns the not found message
         assertEquals("Hash not found.", Message.deleteByHash("XX:9:NOPE"));
 
-        // Check the JSON file was updated so it doesn't load again
+        // CheckS the JSON file was updated so it doesn't load again
         Message.clearArrays();
         Message.readMessagesFromJson();
         assertFalse(Message.messageHashesArray.contains(hashToDelete));
         assertEquals(1, Message.storedMessagesArray.size());
     }
 
-    // Test 6: Display Report
+    // Test 6: It Display's the Report
     @Test
     public void testDisplayReport()
     {
         String report = Message.displayReport();
         
-        // Check that the report has all the required details
+        // It Check that the report has all the required details
         assertTrue(report.contains("Hash:") || report.contains("Message Hash:"));
         assertTrue(report.contains("Recipient:"));
         assertTrue(report.contains("Message:"));
         assertTrue(report.contains("Did you get the cake?"));
-        
-        // Check that the hash logic works correctly (the "!" does not break the last word)
-        assertEquals("08:3:ITTIME", Message.messageHashesArray.get(3));
+        assertTrue(report.contains("It is dinner time !"));
 
-        // Check the JSON round trip (both stored messages are saved and read back)
+        // The disregarded message must never be in the report
+        assertFalse(report.contains("Yohoooo"));
+    }
+
+    // Test 7: Checks that the real hash made for Message 4 is correct (the "!" does not break the last word)
+    // I moved this out of the report test so every test checks one thing.
+    @Test
+    public void testMessage4Hash()
+    {
+        assertEquals("08:3:ITTIME", Message.messageHashesArray.get(3));
+    }
+
+    // Test 8: Checks the JSON round trip (both stored messages are saved to messages.json and read back into the arrays)
+    // I moved this out of the report test too. It catches the bug where only the last message was loaded.
+    @Test
+    public void testJsonRoundTrip()
+    {
         String hash = Message.messageHashesArray.get(1);
         Message.clearArrays();
         Message.readMessagesFromJson();
+
         assertEquals(2, Message.storedMessagesArray.size());
         assertTrue(Message.messageHashesArray.contains(hash));
+        assertTrue(Message.storedMessagesArray.contains("Where are you? You are late! I have asked you to be on time."));
+        assertTrue(Message.storedMessagesArray.contains("Ok, I am leaving without you."));
     }
 }
