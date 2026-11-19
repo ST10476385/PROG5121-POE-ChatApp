@@ -13,7 +13,7 @@
 
 **YouTube Presentation (Part 1 – Registration and Login):** https://youtu.be/FY2LNRlOIKI  
 **YouTube Presentation (Part 2 – Sending Messages):** https://youtu.be/2U3F6mGnfsQ  
-**YouTube Presentation (Part 3 – Store Data and Display Task Report):** [add your Part 3 video link]
+**YouTube Presentation (Part 3 – Store Data and Display Task Report):** https://youtu.be/oSexzGYxrGU?si=4QN7ibutuSfhYOwE
 
 ---
 
@@ -558,7 +558,7 @@ https://youtu.be/2U3F6mGnfsQ
 -  Showing that deleting a stored message also updates `messages.json`
 -  Running and explaining the unit tests and the GitHub Actions run
 
-[add your Part 3 video link]
+https://youtu.be/oSexzGYxrGU?si=4QN7ibutuSfhYOwE
 
 ---
 
