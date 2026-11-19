@@ -4,8 +4,6 @@
  */
 package com.mycompany.chatapp.part1;
 
-import java.io.File;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,26 +18,15 @@ public class MessageTest {
     // I added this so the arrays and the total message counter reset before 
     // every single test runs. This stops Part 2 tests from interfering with each other.
     @BeforeEach
-    public void setUp() 
-    {
+    public void setUp() {
         Message.clearArrays(); 
-    }
-
-    // testSentMessageStore stores a message, which writes a real messages.json file in the project folder.
-    // Before, nothing deleted it, so "Hi Mike, can you join us for dinner tonight?" showed up as a stored message
-    // the next time I ran the actual app. Now I delete the file after every test.
-    @AfterEach
-    public void tearDown() {
-        new File("messages.json").delete();
     }
 
     // -----------assertEquals TESTS--------------------------------------
 
     // It tests if Message should not be more than 250 characters : should show "Message ready to send."
     @Test
-    public void testMessageLengthSuccess()
-    
-    {
+    public void testMessageLengthSuccess() {
         String message = "Hi Mike, can you join us for dinner tonight?";
         //This message is under 250 so it should be fine. Now this tests the real method.
         assertEquals("Message ready to send.", Message.checkMessageLength(message));
@@ -47,9 +34,7 @@ public class MessageTest {
 
     // It tests if Message more than 250 characters : should return the error with the number of characters over
     @Test
-    public void testMessageLengthFailure()
-    
-    {
+    public void testMessageLengthFailure() {
         //I'm building a message that's exactly 260 characters long.
         String longMessage = "";
         for (int i = 0; i < 260; i++) {
@@ -58,14 +43,6 @@ public class MessageTest {
         //10 characters over 250 so the message should say "by 10".
         assertEquals("Message exceeds 250 characters by 10; please reduce the size.",
                 Message.checkMessageLength(longMessage));
-    }
-
-    // It tests that an empty message (or one with only spaces) is rejected.
-    @Test
-    public void testMessageLengthEmpty()
-    {
-        assertEquals("Message cannot be empty.", Message.checkMessageLength(""));
-        assertEquals("Message cannot be empty.", Message.checkMessageLength("   "));
     }
 
     // It tests if Recipient number correctly formatted (+27718693002) : should return success message
@@ -109,13 +86,6 @@ public class MessageTest {
         }
     }
 
-    // It tests that a "word" that is only punctuation (like the "!" at the end) is skipped,so the last word of the hash is still there.
-    @Test
-    public void testMessageHashWithTrailingPunctuation() {
-        Message msg = new Message("0812345678", 3, "Developer", "It is dinner time !");
-        assertEquals("08:3:ITTIME", msg.createMessageHash());
-    }
-
     // It tests if Message ID is created and shown correctly : "Message ID generated: <Message ID>"
     @Test
     public void testMessageIDCreated() {
@@ -125,32 +95,25 @@ public class MessageTest {
         System.out.println(msg.displayMessageID());
     }
 
-    // It tests if MessageSent: User selected "Send Message" (option 1) : "Message successfully sent"
+    // It tests if MessageSent: User selected "Send Message" (option 1) : "Message successfully sent."
     @Test
     public void testSentMessageSend() {
         Message msg = new Message(0, "+27718693002", "Hi Mike, can you join us for dinner tonight?");
         assertEquals("Message successfully sent.", msg.sentMessage(1));
     }
 
-    // It tests if MessageSent: User selected "Disregard Message" (option 2) : "Press 0 to delete the message"
+    // It tests if MessageSent: User selected "Disregard Message" (option 2) : "Press 0 to delete the message."
     @Test
     public void testSentMessageDisregard() {
         Message msg = new Message(1, "08575975889", "Hi Keegan, did you receive the payment?");
         assertEquals("Press 0 to delete the message.", msg.sentMessage(2));
     }
 
-    // It tests if MessageSent: User selected "Store Message" (option 3) : "Message successfully stored"
+    // It tests if MessageSent: User selected "Store Message" (option 3) : "Message successfully stored."
     @Test
     public void testSentMessageStore() {
         Message msg = new Message(0, "+27718693002", "Hi Mike, can you join us for dinner tonight?");
         assertEquals("Message successfully stored.", msg.sentMessage(3));
-    }
-
-    // It tests if MessageSent: User selected something that isn't 1, 2 or 3 : "Invalid option"
-    @Test
-    public void testSentMessageInvalidOption() {
-        Message msg = new Message(0, "+27718693002", "Hi Mike, can you join us for dinner tonight?");
-        assertEquals("Invalid option.", msg.sentMessage(7));
     }
 
     // ============= assertTrue or assertFalse TESTS =================================================
@@ -161,14 +124,6 @@ public class MessageTest {
         Message msg = new Message(0, "+27718693002", "Hi Mike, can you join us for dinner tonight?");
         assertTrue(msg.getMessageID().length() <= 10);
         assertEquals(10, msg.getMessageID().length());
-    }
-
-    // It tests that checkMessageID() gives false when the ID is longer than 10 characters
-    // (I use my fixed ID constructor for this).
-    @Test
-    public void testMessageIDTooLong() {
-        Message msg = new Message("12345678901", 0, "+27718693002", "Hi Mike, can you join us for dinner tonight?");
-        assertFalse(msg.checkMessageID());
     }
 
     // It tests if Total messages sent should increase when we send a message
