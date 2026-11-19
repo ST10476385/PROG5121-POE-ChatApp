@@ -13,6 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author ST10476385 KN SHIKWAMBANA
  */
+
+
 public class MessageTest {
 
     // I added this so the arrays and the total message counter reset before 

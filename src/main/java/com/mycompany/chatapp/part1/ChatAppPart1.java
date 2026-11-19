@@ -282,6 +282,9 @@ public class ChatAppPart1 {
                 System.out.println(msg.displayMessageDetails());
             }
         }
+        
+        
+     
 
         //After all the messages are done, show how many messages were actually sent.
         System.out.println();
