@@ -111,7 +111,7 @@ public class Message {
     //and not a copy of it. It's static because it doesn't need a Message object.
     public static String checkMessageLength(String text)
     {
-        // PART 3 FIX: I added the trim check so a blank message (just pressing Enter) is rejected too,
+        //  I added the trim check so a blank message (just pressing Enter) is rejected too,
         // before it would have passed and made an empty hash.
         if (text == null || text.trim().equals(""))
         {
@@ -164,7 +164,7 @@ public class Message {
 
         //I strip out punctuation so the hash only has letters. Otherwise
         //things like "tonight?" would end up in the hash with the question mark.
-        // PART 3 FIX: I also skip any "word" that is only punctuation, like the "!" at the end of
+        //  I also skip any "word" that is only punctuation, like the "!" at the end of
         // "It is dinner time !". Before, the last word came out empty and the hash lost "TIME".
         String firstWord = "";
         String lastWord = "";
@@ -585,7 +585,7 @@ public class Message {
                 {
                     currentHash = extractJsonString(line);
                 }
-                // PART 3 FIX: Every object in the file except the last one ends with "}," (with a comma),
+                // Every object in the file except the last one ends with "}," (with a comma),
                 // so line.equals("}") missed them and only the LAST stored message was loaded.
                 // startsWith("}") catches both "}" and "},".
                 else if (line.startsWith("}"))
@@ -652,7 +652,7 @@ public class Message {
 
     // PART 3: Same idea here. I check every recipient, and if it matches,
     // I add their message to the result string.
-    // PART 3 FIX: The brief says "sent or stored", so I skip the disregarded ones using the status array.
+    // The brief says "sent or stored", so I skip the disregarded ones using the status array.
     public static String searchByRecipient(String recipient)
     {
         String result = "";
@@ -708,7 +708,7 @@ public class Message {
     }
 
     // PART 3: The report shows all the sent messages with their ID, hash and recipient.
-    // PART 3 FIX: I added a section for the stored messages too. Delete only works on stored messages,
+    //I added a section for the stored messages too. Delete only works on stored messages,
     // so the user needs to be able to see the hash of a stored message in the report to delete it.
     public static String displayReport()
     {
