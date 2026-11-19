@@ -368,7 +368,8 @@ The workflow in `.github/workflows/TestJava.yml` runs automatically whenever cod
 
 The badge at the top of this README shows whether the latest run passed.
 
-**GITHUB ACTIONS SCREENSHOT – add a screenshot of your green Actions run here:**
+**GITHUB ACTIONS SCREENSHOT :**
+<img width="1763" height="2502" alt="image" src="https://github.com/user-attachments/assets/45af2871-30ca-4d59-8836-f656bc64d0df" />
 
 <img width="1759" height="3120" alt="image" src="https://github.com/user-attachments/assets/6bb049e7-0367-4e20-ae3c-a6e9b4ee52d0" />
 
