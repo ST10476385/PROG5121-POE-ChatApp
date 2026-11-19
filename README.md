@@ -225,7 +225,7 @@ Recipient: +27718693002
 Message: Hi Mike, can you join us for dinner tonight?
 ```
 
-**PART 2 SCREENSHOTS – add your run screenshots here (drag and drop them into this file on GitHub):**
+**PART 2 SCREENSHOTS :**
 
 <img width="1335" height="1078" alt="image" src="https://github.com/user-attachments/assets/9991fd03-edad-4d17-9ae8-2037a9f63d24" />
 
@@ -274,7 +274,14 @@ Enter Message Hash: 38:3:WHERETIME
 Message: "Where are you? You are late! I have asked you to be on time." successfully deleted.
 ```
 
-**PART 3 SCREENSHOTS – add your Part 3 run screenshots here (drag and drop them into this file on GitHub):**
+**PART 3 SCREENSHOTS :**
+<img width="1266" height="967" alt="image" src="https://github.com/user-attachments/assets/9b3163b4-4b00-4f13-8dbb-944af729cded" />
+<img width="1290" height="950" alt="image" src="https://github.com/user-attachments/assets/8e535f07-30ba-479d-a1f8-20c71c24aab8" />
+<img width="1282" height="956" alt="image" src="https://github.com/user-attachments/assets/e6233322-afeb-41ed-8ff7-df10ea14dc0c" />
+<img width="1290" height="852" alt="image" src="https://github.com/user-attachments/assets/8beea815-b155-4c2e-bfa9-173088b59660" />
+<img width="1237" height="906" alt="image" src="https://github.com/user-attachments/assets/b9672235-3b3a-41cc-a497-75a338d42364" />
+<img width="1296" height="955" alt="image" src="https://github.com/user-attachments/assets/36c158cd-5cb6-4c7e-b589-d50a3ff15b9a" />
+<img width="1300" height="978" alt="image" src="https://github.com/user-attachments/assets/190f8ab5-d9a4-488a-82be-87d01235af92" />
 
 ---
 
@@ -307,9 +314,10 @@ BUILD SUCCESS
 
 
 ```
+<img width="1490" height="1012" alt="Screenshot 2026-11-19 192718" src="https://github.com/user-attachments/assets/aadfca4f-3dea-4978-bc3a-3bf4e9dcc761" />
 <img width="1912" height="1016" alt="image" src="https://github.com/user-attachments/assets/9d7db0ea-91e7-480a-b51a-452249db3e8c" />
 <img width="1912" height="1015" alt="image" src="https://github.com/user-attachments/assets/22eaa9d5-46cf-4807-aa55-3aa0d86f93e3" />
-<img width="1886" height="777" alt="image" src="https://github.com/user-attachments/assets/cf7f31ef-0f02-4861-9900-75147f7843b5" />
+
 
 The tests that store messages create a `messages.json` file in the project folder. `MessageManagerTest` deletes it after each test, so delete any leftover `messages.json` before running the application to keep test data out of it.
 
@@ -324,7 +332,7 @@ The tests that store messages create a `messages.json` file in the project folde
 | Message sent (options 1, 2 and 3) | "Message successfully sent.", "Press 0 to delete the message." and "Message successfully stored." |
 | Total messages | The total goes up by 1 when a message is sent, and a disregarded message is not counted |
 
-**PART 2 TEST SCREENSHOT – add your `MessageTest` screenshot here:**
+**PART 2 TEST SCREENSHOT :**
 
 <img width="1912" height="1015" alt="image" src="https://github.com/user-attachments/assets/eb042aee-be59-4461-92d8-85033a683069" />
 
@@ -343,7 +351,9 @@ The tests use the five test messages from the brief: message 1 is sent, message 
 | 7. Message 4 hash | `08:3:ITTIME`, created by the real hash method (the `!` does not break the last word) |
 | 8. JSON round trip | Both stored messages are written to `messages.json` and read back into the arrays |
 
-**PART 3 TEST SCREENSHOT – add your `MessageManagerTest` screenshot here:**
+**PART 3 TEST SCREENSHOT :**
+
+<img width="1487" height="1026" alt="Screenshot 2026-11-19 192756" src="https://github.com/user-attachments/assets/c132ac8e-1a23-4535-b812-0f27c73e39c6" />
 
 ---
 
