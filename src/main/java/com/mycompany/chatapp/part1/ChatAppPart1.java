@@ -38,6 +38,8 @@ public class ChatAppPart1 {
         //saying what's wrong or that it worked, so I just print whatever it returns.
         String registerResult = login.registerUser(username, password, cellNumber, firstName, lastName);
         System.out.println(registerResult);
+        
+        
 
         //It only moves on to login if registration actually succeeded, checking the start of the message
         //since that's the easiest way to tell if it went through without adding another return type.
@@ -57,15 +59,27 @@ public class ChatAppPart1 {
 
             //Only move on to the QuickChat menu if login was actually successful.
             //I added this check so random people can't just skip the login part.
-            if (login.isLoggedIn())
+            if (login.isLoggedIn()
+                    
+                    )
             {
-                // PART 3: Before the menu even starts, I read the JSON file so that
+                // Before the menu even starts, I read the JSON file so that
                 // any messages stored from a previous run get loaded into my arrays.
                 Message.readMessagesFromJson();
 
-                // PART 3 FIX: The brief says to read the JSON file into an array AND display it to the user,
+                
+                // The brief says to read the JSON file into an array AND display it to the user,
                 // so I tell the user how many stored messages were loaded from the file.
                 System.out.println("Loaded " + Message.storedMessagesArray.size() + " stored message(s) from messages.json.");
+
+                
+                
+                // I also show the loaded messages themselves. Right after reading the file the arrays
+                // only hold the stored messages, so every message in them is one that came from the JSON file.
+                for (int i = 0; i < Message.allMessagesText.size(); i++)
+                {
+                    System.out.println("- " + Message.allRecipients.get(i) + ": " + Message.allMessagesText.get(i));
+                }
 
                 System.out.println();
                 System.out.println("Welcome to QuickChat.");
@@ -78,6 +92,8 @@ public class ChatAppPart1 {
                     System.out.print("How many messages do you wish to enter? ");
                     String numInput = input.nextLine();
                     try
+                        
+                        
                     {
                         numMessages = Integer.parseInt(numInput);
                     }
@@ -85,9 +101,13 @@ public class ChatAppPart1 {
                     {
                         System.out.println("Please enter a valid number.");
                         continue;
+                        
+                        
                     }
                     if (numMessages <= 0)
                     {
+                        
+                        
                         System.out.println("Number must be more than 0.");
                     }
                 }
@@ -98,6 +118,8 @@ public class ChatAppPart1 {
 
                 //This boolean keeps the menu running until the user picks quit.
                 boolean running = true;
+                
+                
                 while (running)
                 {
                     System.out.println();
@@ -239,7 +261,7 @@ public class ChatAppPart1 {
                 continue;
             }
 
-            // PART 3 FIX: A number that isn't 1, 2 or 3 (like 7) used to throw the message away without recording it.
+            // A number that isn't 1, 2 or 3 (like 7) used to throw the message away without recording it.
             // Now it is handled the same way as invalid text above, so the message is disregarded properly.
             if (sendChoice < 1 || sendChoice > 3)
             {
@@ -294,7 +316,7 @@ public class ChatAppPart1 {
 
             if (choice.equals("a"))
             {
-                // PART 3: Display the sender and recipient for each stored message.
+                // PART 3: Displays the sender and recipient for each stored message.
                 boolean found = false;
 
                 for (int i = 0; i < Message.messageStatusesArray.size(); i++)
