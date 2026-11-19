@@ -9,7 +9,7 @@
 **Module:** PROG5121  
 **Part 1 Submission Date:** 18 September 2026  
 **Part 2 Submission Date:** 19 October 2026  
-**Part 3 Submission Date:** [add your Part 3 submission date]
+**Part 3 Submission Date:** 19 November 2026
 
 **YouTube Presentation (Part 1 – Registration and Login):** https://youtu.be/FY2LNRlOIKI  
 **YouTube Presentation (Part 2 – Sending Messages):** https://youtu.be/2U3F6mGnfsQ  
