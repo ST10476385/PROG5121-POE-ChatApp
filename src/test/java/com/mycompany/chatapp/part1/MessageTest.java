@@ -21,7 +21,9 @@ public class MessageTest {
     // every single test runs. This stops Part 2 tests from interfering with each other.
     @BeforeEach
     public void setUp() {
-        Message.clearArrays(); 
+        Message.clearArrays()
+                
+                ; 
     }
 
     // -----------assertEquals TESTS--------------------------------------
