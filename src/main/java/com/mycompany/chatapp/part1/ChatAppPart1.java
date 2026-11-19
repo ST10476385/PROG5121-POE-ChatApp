@@ -59,6 +59,14 @@ public class ChatAppPart1 {
             //I added this check so random people can't just skip the login part.
             if (login.isLoggedIn())
             {
+                // PART 3: Before the menu even starts, I read the JSON file so that
+                // any messages stored from a previous run get loaded into my arrays.
+                Message.readMessagesFromJson();
+
+                // PART 3 FIX: The brief says to read the JSON file into an array AND display it to the user,
+                // so I tell the user how many stored messages were loaded from the file.
+                System.out.println("Loaded " + Message.storedMessagesArray.size() + " stored message(s) from messages.json.");
+
                 System.out.println();
                 System.out.println("Welcome to QuickChat.");
 
@@ -97,6 +105,7 @@ public class ChatAppPart1 {
                     System.out.println("Option 1) Send Messages");
                     System.out.println("Option 2) Show recently sent messages");
                     System.out.println("Option 3) Quit");
+                    System.out.println("Option 4) Stored Messages"); // PART 3: Added this new option for the arrays.
                     System.out.print("Choose an option: ");
 
                     //I'm reading it as a String first and then converting it, because if
@@ -110,7 +119,7 @@ public class ChatAppPart1 {
                     }
                     catch (NumberFormatException e)
                     {
-                        System.out.println("Please enter a number (1, 2 or 3).");
+                        System.out.println("Please enter a number (1, 2, 3 or 4).");
                         continue;
                     }
 
@@ -136,9 +145,15 @@ public class ChatAppPart1 {
                         System.out.println("Goodbye!");
                         running = false;
                     }
+                    else if (menuChoice == 4)
+                    {
+                        // PART 3: If they pick 4, I jump into the stored messages menu.
+                        // I send the first and last name so it knows who the sender is.
+                        storedMessagesMenu(input, firstName, lastName);
+                    }
                     else
                     {
-                        System.out.println("Invalid option. Please choose 1, 2 or 3.");
+                        System.out.println("Invalid option. Please choose 1, 2, 3 or 4.");
                     }
                 }
             }
@@ -202,12 +217,6 @@ public class ChatAppPart1 {
             Message msg = new Message(i, recipient, messageText);
             System.out.println(msg.displayMessageID());
 
-            //Show all the details in the order the assignment asked for:
-            //Message ID, Message Hash, Recipient, Message.
-            System.out.println();
-            System.out.println("--- Message Details ---");
-            System.out.println(msg.displayMessageDetails());
-
             // -------- Ask what to do with it --------
             System.out.println();
             System.out.println("What would you like to do?");
@@ -226,14 +235,33 @@ public class ChatAppPart1 {
             catch (NumberFormatException e)
             {
                 System.out.println("Invalid input. Message disregarded.");
+                msg.sentMessage(2);
+                continue;
+            }
+
+            // PART 3 FIX: A number that isn't 1, 2 or 3 (like 7) used to throw the message away without recording it.
+            // Now it is handled the same way as invalid text above, so the message is disregarded properly.
+            if (sendChoice < 1 || sendChoice > 3)
+            {
+                System.out.println("Invalid option. Message disregarded.");
+                msg.sentMessage(2);
                 continue;
             }
 
             String sendResult = msg.sentMessage(sendChoice);
             System.out.println(sendResult);
+
+            // LECTURER FEEDBACK: I moved this down so it only prints if they actually chose 1 (Send).
+            // Before it was printing the details before they made a choice.
+            if (sendChoice == 1)
+            {
+                System.out.println();
+                System.out.println("--- Message Details ---");
+                System.out.println(msg.displayMessageDetails());
+            }
         }
 
-        //After all the messages are done, show how many were actually sent.
+        //After all the messages are done, show how many messages were actually sent.
         System.out.println();
         System.out.println("Total messages sent: " + Message.returnTotalMessages());
 
@@ -241,5 +269,86 @@ public class ChatAppPart1 {
         System.out.println();
         System.out.println("--- All Messages Sent ---");
         System.out.println(Message.printMessages());
+    }
+
+    // PART 3: This is the menu for Option 4. It loops so the user can check the longest message,
+    // search and delete stuff all in one go before going back to the main menu.
+    private static void storedMessagesMenu(Scanner input, String firstName, String lastName)
+    {
+        boolean running = true;
+
+        while (running)
+        {
+            System.out.println("\n--- Stored Messages Menu ---");
+            System.out.println("a) Display sender and recipient of all stored messages");
+            System.out.println("b) Display the longest stored message");
+            System.out.println("c) Search for a message ID");
+            System.out.println("d) Search messages for a particular recipient");
+            System.out.println("e) Delete a message using the message hash");
+            System.out.println("f) Display full report of all stored messages");
+            System.out.println("g) Go back to main menu");
+            System.out.print("Choose an option: ");
+
+            // I put .toLowerCase() here so if they type an uppercase 'A' it still works like a lowercase 'a'.
+            String choice = input.nextLine().toLowerCase();
+
+            if (choice.equals("a"))
+            {
+                // PART 3: Display the sender and recipient for each stored message.
+                boolean found = false;
+
+                for (int i = 0; i < Message.messageStatusesArray.size(); i++)
+                {
+                    if (Message.messageStatusesArray.get(i).equals("Stored"))
+                    {
+                        System.out.println("Sender: " + firstName + " " + lastName);
+                        System.out.println("Recipient: " + Message.allRecipients.get(i));
+                        found = true;
+                        System.out.println();
+                    }
+                }
+
+                if (!found)
+                {
+                    System.out.println("No stored messages available.");
+                }
+            }
+            else if (choice.equals("b"))
+            {
+                // This calls the method I made in Message.java to find the longest string in the array.
+                System.out.println("Longest Message: " + Message.displayLongestMessage());
+            }
+            else if (choice.equals("c"))
+            {
+                System.out.print("Enter Message ID: ");
+                String id = input.nextLine();
+                System.out.println(Message.searchByMessageID(id));
+            }
+            else if (choice.equals("d"))
+            {
+                System.out.print("Enter Recipient Number: ");
+                String recip = input.nextLine();
+                System.out.println(Message.searchByRecipient(recip));
+            }
+            else if (choice.equals("e"))
+            {
+                System.out.print("Enter Message Hash: ");
+                String hash = input.nextLine();
+                System.out.println(Message.deleteByHash(hash));
+            }
+            else if (choice.equals("f"))
+            {
+                System.out.println(Message.displayReport());
+            }
+            else if (choice.equals("g"))
+            {
+                // Breaks the loop to go back.
+                running = false;
+            }
+            else
+            {
+                System.out.println("Invalid option.");
+            }
+        }
     }
 }
