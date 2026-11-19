@@ -479,7 +479,8 @@ Example of what the file looks like:
   }
 ]
 ```
-<img width="1352" height="1078" alt="image" src="https://github.com/user-attachments/assets/fa26a6e6-92ac-4b27-8b0b-2037d4848565" />
+<img width="1475" height="931" alt="image" src="https://github.com/user-attachments/assets/a3ad8c15-d894-4983-ab7b-731aa5ccc5bc" />
+
 
 Quotes and backslashes inside a message are escaped so they cannot break the JSON, and they are unescaped again when the file is read.
 
