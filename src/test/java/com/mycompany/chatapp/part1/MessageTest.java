@@ -4,6 +4,7 @@
  */
 package com.mycompany.chatapp.part1;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,6 +14,13 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author ST10476385 KN SHIKWAMBANA
  */
 public class MessageTest {
+
+    // I added this so the arrays and the total message counter reset before 
+    // every single test runs. This stops Part 2 tests from interfering with each other.
+    @BeforeEach
+    public void setUp() {
+        Message.clearArrays(); 
+    }
 
     // -----------assertEquals TESTS--------------------------------------
 
