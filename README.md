@@ -1,5 +1,4 @@
-
-# PROG5121 Chat App (Part 1 and Part 2) – QuickChat
+# PROG5121 Chat App (Part 1, Part 2 and Part 3) – QuickChat
 
 [![TestJava](https://github.com/ST10476385/PROG5121-POE-ChatApp/actions/workflows/TestJava.yml/badge.svg)](https://github.com/ST10476385/PROG5121-POE-ChatApp/actions/workflows/TestJava.yml)
 
@@ -9,10 +8,12 @@
 **Student Number:** ST10476385  
 **Module:** PROG5121  
 **Part 1 Submission Date:** 18 September 2026  
-**Part 2 Submission Date:** 19 October 2026
+**Part 2 Submission Date:** 19 October 2026  
+**Part 3 Submission Date:** [add your Part 3 submission date]
 
 **YouTube Presentation (Part 1 – Registration and Login):** https://youtu.be/FY2LNRlOIKI  
-**YouTube Presentation (Part 2 – Sending Messages):** https://youtu.be/2U3F6mGnfsQ
+**YouTube Presentation (Part 2 – Sending Messages):** https://youtu.be/2U3F6mGnfsQ  
+**YouTube Presentation (Part 3 – Store Data and Display Task Report):** [add your Part 3 video link]
 
 ---
 
@@ -29,13 +30,14 @@
 - [Application Flow](#application-flow)
 - [Validation Rules](#validation-rules)
 - [Storing Messages as JSON](#storing-messages-as-json)
+- [Part 3 – Stored Messages Menu](#part-3--stored-messages-menu)
 - [Citations and References](#references)
   
 ---
 
 ##  Project Overview
 
-This is the Chat App Proof of Engagement (PoE) for the module PROG5121. It is a **console-based chat application (QuickChat)** built in two parts.
+This is the Chat App Proof of Engagement (PoE) for the module PROG5121. It is a **console-based chat application (QuickChat)** built in three parts.
 
 **Part 1 – Registration and Login**
 
@@ -50,6 +52,12 @@ This is the Chat App Proof of Engagement (PoE) for the module PROG5121. It is a 
 6. For each message the user can **send it, disregard it, or store it** to send later (stored messages are saved to a **JSON file**).
 7. At the end, the application shows the **total number of messages sent** and the messages that were sent.
 
+**Part 3 – Store Data and Display Task Report**
+
+8. Every message is also saved into **parallel arrays** (sent, disregarded, stored, message hashes, message IDs, plus the recipients, message text, status and message number). Nothing is hard-coded.
+9. When the user logs in, the **JSON file is read back into the arrays**, so stored messages from a previous run are loaded.
+10. A fourth main menu option, **Stored Messages**, lets the user display the sender and recipient of stored messages, find the longest stored message, search by message ID, search by recipient, delete a message using its hash, and display a full report.
+
 The application validates all inputs using the rules specified in the assignment brief and provides clear feedback to the user. Every part is tested with JUnit 5 and the tests run automatically on GitHub.
 
 ---
@@ -63,16 +71,19 @@ The application validates all inputs using the rules specified in the assignment
 | **Cell Phone Validation** | Must start with the South African country code (`+27`) and be followed by 1–10 digits. |
 | **Registration** | Stores user details (first name, last name, username, password, cell number). |
 | **Login** | Verifies credentials and returns a welcome message or error message. |
-| **Welcome Message and Menu** | Shows "Welcome to QuickChat." and a numeric menu: 1) Send Messages, 2) Show recently sent messages ("Coming Soon."), 3) Quit. The menu runs in a `while` loop until the user quits. |
+| **Welcome Message and Menu** | Shows "Welcome to QuickChat." and a numeric menu: 1) Send Messages, 2) Show recently sent messages ("Coming Soon."), 3) Quit, 4) Stored Messages (Part 3). The menu runs in a `while` loop until the user quits. |
 | **Number of Messages** | The user sets how many messages they will enter once, at the start. A `for` loop then runs exactly that many times. |
 | **Message Number** | Comes from the `for` loop counter, so the first message is number 0. |
-| **Message ID** | Randomly generated 10-digit number. |
-| **Message Hash** | First two digits of the Message ID, a colon, the message number, a colon, then the first and last words of the message in capitals (for example `00:0:HITONIGHT`). |
-| **Message Length Check** | A message may not be longer than 250 characters. If it is too long, the app says how many characters over the limit it is. |
+| **Message ID** | Randomly generated 10-digit number (15 random digits, then `substring` keeps the first 10). |
+| **Message Hash** | First two digits of the Message ID, a colon, the message number, a colon, then the first and last words of the message in capitals (for example `00:0:HITONIGHT`). Punctuation is removed, and a "word" that is only punctuation (like a lone `!`) is skipped. |
+| **Message Length Check** | A message may not be longer than 250 characters. If it is too long, the app says how many characters over the limit it is. An empty message is rejected. |
 | **Recipient Check** | Reuses the cell phone check from the `Login` class (international code followed by the number). |
-| **Send, Disregard or Store** | The user chooses what to do with each message. Only sent messages count towards the total. |
+| **Send, Disregard or Store** | The user chooses what to do with each message. Only sent messages count towards the total. An invalid choice is recorded as disregarded. |
 | **JSON Storage** | Stored messages are written to `messages.json` as a valid JSON array. |
-| **Unit Testing** | JUnit 5 tests for the `Login` class (14 tests) and the `Message` class (13 tests). |
+| **Parallel Arrays (Part 3)** | `ArrayList`s hold the sent, disregarded and stored messages, the hashes and the IDs. The recipients, message text, status and message number are kept at the same index so every message's details stay together. |
+| **Read JSON into Arrays (Part 3)** | At login, `messages.json` is read back into the arrays and the app shows how many stored messages were loaded and lists them. |
+| **Stored Messages Menu (Part 3)** | Main menu option 4 opens a menu: display sender and recipient, longest message, search by message ID, search by recipient, delete by hash, and a full report. |
+| **Unit Testing** | JUnit 5 tests for the `Login` class (14 tests), the `Message` class (13 tests) and the Part 3 message manager features (8 tests). |
 | **Automated Testing** | A GitHub Actions workflow (`TestJava.yml`) runs all the tests on every push and pull request. |
 
 ---
@@ -92,22 +103,25 @@ The application validates all inputs using the rules specified in the assignment
 ---
 
 ##  Project Structure
-The project now also contains the Part 2 files:
+The project now also contains the Part 3 files:
 
 ```
 PROG5121-POE-ChatApp
 ├── .github/workflows/TestJava.yml      (GitHub Actions workflow)
 ├── src
 │   ├── main/java/com/mycompany/chatapp/part1
-│   │   ├── ChatAppPart1.java           (main program: registration, login, menu, sending messages)
+│   │   ├── ChatAppPart1.java           (main program: registration, login, menus, sending messages, stored messages menu)
 │   │   ├── Login.java                  (Part 1: registration and login checks)
-│   │   └── Message.java                (Part 2: message ID, hash, checks, send/store, JSON)
+│   │   └── Message.java                (Part 2 and 3: message ID, hash, checks, send/store, JSON, arrays, search, delete, report)
 │   └── test/java/com/mycompany/chatapp/part1
 │       ├── LoginTest.java              (14 unit tests)
-│       └── MessageTest.java            (13 unit tests)
+│       ├── MessageTest.java            (13 unit tests)
+│       └── MessageManagerTest.java     (8 unit tests for Part 3)
 ├── pom.xml
 └── README.md
 ```
+
+`messages.json` is created in the project folder while the app runs. It is not part of the source code.
 
 ---
 
@@ -175,9 +189,11 @@ Welcome John, Doe it is great to see you again.
 
 ### Expected Output – Part 2 (Sending Messages)
 
-After a successful login the QuickChat menu starts. The Message IDs are random, so yours will differ:
+After a successful login the QuickChat menu starts. The Message IDs are random, so yours will differ. The message details are only shown after the user chooses to send the message:
 
 ```
+Loaded 0 stored message(s) from messages.json.
+
 Welcome to QuickChat.
 How many messages do you wish to enter? 3
 
@@ -185,6 +201,7 @@ How many messages do you wish to enter? 3
 Option 1) Send Messages
 Option 2) Show recently sent messages
 Option 3) Quit
+Option 4) Stored Messages
 Choose an option: 1
 
 --- Message 1 of 3 ---
@@ -194,18 +211,18 @@ Enter your message (max 250 characters): Hi Mike, can you join us for dinner ton
 Message ready to send.
 Message ID generated: 7363025905
 
---- Message Details ---
-Message ID: 7363025905
-Message Hash: 73:0:HITONIGHT
-Recipient: +27718693002
-Message: Hi Mike, can you join us for dinner tonight?
-
 What would you like to do?
 1) Send Message
 2) Disregard Message
 3) Store Message to send later
 Choose an option: 1
 Message successfully sent.
+
+--- Message Details ---
+Message ID: 7363025905
+Message Hash: 73:0:HITONIGHT
+Recipient: +27718693002
+Message: Hi Mike, can you join us for dinner tonight?
 ```
 
 **PART 2 SCREENSHOTS – add your run screenshots here (drag and drop them into this file on GitHub):**
@@ -220,6 +237,45 @@ Message successfully sent.
 
 <img width="1346" height="1072" alt="image" src="https://github.com/user-attachments/assets/132060c4-4692-4a0a-acd1-6bafede906c9" />
 
+### Expected Output – Part 3 (Stored Messages)
+
+Main menu option 4 opens the Stored Messages menu. The IDs and hashes are random, so yours will differ:
+
+```
+--- Menu ---
+Option 1) Send Messages
+Option 2) Show recently sent messages
+Option 3) Quit
+Option 4) Stored Messages
+Choose an option: 4
+
+--- Stored Messages Menu ---
+a) Display sender and recipient of all stored messages
+b) Display the longest stored message
+c) Search for a message ID
+d) Search messages for a particular recipient
+e) Delete a message using the message hash
+f) Display full report of all stored messages
+g) Go back to main menu
+Choose an option: a
+Sender: Khanyisa Shikwambana
+Recipient: +27838884567
+
+Choose an option: b
+Longest Message: Where are you? You are late! I have asked you to be on time.
+
+Choose an option: d
+Enter Recipient Number: +27838884567
+Message: Where are you? You are late! I have asked you to be on time.
+Message: Ok, I am leaving without you.
+
+Choose an option: e
+Enter Message Hash: 38:3:WHERETIME
+Message: "Where are you? You are late! I have asked you to be on time." successfully deleted.
+```
+
+**PART 3 SCREENSHOTS – add your Part 3 run screenshots here (drag and drop them into this file on GitHub):**
+
 ---
 
 ##  How to Run Unit Tests
@@ -227,7 +283,7 @@ Message successfully sent.
 ### Option 1: Run from NetBeans
 
 1. In the **Projects** tab, expand **Test Packages** → `com.mycompany.chatapp.part1`.
-2. Right-click `LoginTest.java` or `MessageTest.java` → **Test File** (or press `Ctrl + F6`), or right-click the project → **Test** to run everything.
+2. Right-click `LoginTest.java`, `MessageTest.java` or `MessageManagerTest.java` → **Test File** (or press `Ctrl + F6`), or right-click the project → **Test** to run everything.
 
 ### Option 2: Run from Command Line (with Maven)
 
@@ -242,9 +298,11 @@ All tests should pass with a green bar:
 ```
 Running com.mycompany.chatapp.part1.LoginTest
 Tests run: 14, Failures: 0, Errors: 0, Skipped: 0
+Running com.mycompany.chatapp.part1.MessageManagerTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
 Running com.mycompany.chatapp.part1.MessageTest
 Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
-Tests run: 27, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 35, Failures: 0, Errors: 0, Skipped: 0
 BUILD SUCCESS
 
 
@@ -252,6 +310,8 @@ BUILD SUCCESS
 <img width="1912" height="1016" alt="image" src="https://github.com/user-attachments/assets/9d7db0ea-91e7-480a-b51a-452249db3e8c" />
 <img width="1912" height="1015" alt="image" src="https://github.com/user-attachments/assets/22eaa9d5-46cf-4807-aa55-3aa0d86f93e3" />
 <img width="1886" height="777" alt="image" src="https://github.com/user-attachments/assets/cf7f31ef-0f02-4861-9900-75147f7843b5" />
+
+The tests that store messages create a `messages.json` file in the project folder. `MessageManagerTest` deletes it after each test, so delete any leftover `messages.json` before running the application to keep test data out of it.
 
 ### What the Message tests cover (Part 2)
 
@@ -264,10 +324,26 @@ BUILD SUCCESS
 | Message sent (options 1, 2 and 3) | "Message successfully sent.", "Press 0 to delete the message." and "Message successfully stored." |
 | Total messages | The total goes up by 1 when a message is sent, and a disregarded message is not counted |
 
-**PART 2 TEST SCREENSHOT – add your 13/13 `MessageTest` screenshot here:**
+**PART 2 TEST SCREENSHOT – add your `MessageTest` screenshot here:**
 
 <img width="1912" height="1015" alt="image" src="https://github.com/user-attachments/assets/eb042aee-be59-4461-92d8-85033a683069" />
 
+### What the Message Manager tests cover (Part 3)
+
+The tests use the five test messages from the brief: message 1 is sent, message 2 is stored (the longest), message 3 is disregarded, message 4 is sent and message 5 is stored.
+
+| Test | What it checks |
+|------|----------------|
+| 1. Sent messages array | Holds exactly 2 messages, "Did you get the cake?" and "It is dinner time !", in order |
+| 2. Display the longest message | Returns "Where are you? You are late! I have asked you to be on time." |
+| 3. Search for a message ID | Message 4's ID (`0838884567`) returns its recipient and "It is dinner time !". An ID that does not exist gives "Message ID not found." |
+| 4. Search for a recipient | `+27838884567` returns both of that recipient's stored messages. The disregarded message's recipient and a fake number give "No messages found for this recipient." |
+| 5. Delete by hash | Deleting message 2 gives the exact "successfully deleted" message, removes it from the arrays and updates `messages.json`. A fake hash gives "Hash not found." |
+| 6. Display report | The report contains the hash, recipient and message of the sent messages, and never the disregarded message |
+| 7. Message 4 hash | `08:3:ITTIME`, created by the real hash method (the `!` does not break the last word) |
+| 8. JSON round trip | Both stored messages are written to `messages.json` and read back into the arrays |
+
+**PART 3 TEST SCREENSHOT – add your `MessageManagerTest` screenshot here:**
 
 ---
 
@@ -311,10 +387,18 @@ The registration process validates each input in order:
 
 1. The menu only appears after a successful login, with the message "Welcome to QuickChat."
 2. The user enters how many messages they want to send (once, at the start).
-3. Option 1 runs a `for` loop for exactly that many messages. For each one the app asks for the recipient, checks it, asks for the message, checks the length, creates the Message ID and Hash, and shows all the details.
-4. The user then chooses to send, disregard, or store the message.
+3. Option 1 runs a `for` loop for exactly that many messages. For each one the app asks for the recipient, checks it, asks for the message, checks the length, and creates the Message ID and Hash.
+4. The user then chooses to send, disregard, or store the message. The full message details (ID, hash, recipient, message) are only shown after the message has been sent.
 5. When all the messages are done, the app shows the total number of messages sent and the messages that were sent.
 6. Option 2 shows "Coming Soon." and Option 3 quits the application.
+
+### Stored Messages Flow (Part 3)
+
+1. Before the menu starts, the app reads `messages.json` into the arrays, shows how many stored messages were loaded and lists them.
+2. Every message is added to the parallel arrays when the user sends, disregards or stores it.
+3. Option 4 opens the Stored Messages menu, which loops until the user chooses `g` to go back.
+4. Searching, finding the longest message, deleting and the report all use the arrays, with the same index linking a message's ID, hash, recipient, text, status and number.
+5. Deleting a stored message removes it from every array and rewrites `messages.json`.
 
 ---
 
@@ -349,15 +433,27 @@ The registration process validates each input in order:
 | Condition | Valid Example | Invalid Example |
 |-----------|---------------|-----------------|
 | Recipient has the international code and no more than 10 digits after it | `+27718693002` | `08575975889` |
+| Message is not empty | `Hi Mike, can you join us for dinner tonight?` | (just pressing Enter) |
 | Message is no longer than 250 characters | `Hi Mike, can you join us for dinner tonight?` | A message of 260 characters (rejected: exceeds by 10) |
 | Message ID is 10 digits | `7363025905` | – (always generated, never typed) |
 | Message Hash format | `73:0:HITONIGHT` (first two ID digits, message number, first and last word in capitals) | – (always generated) |
+
+### Stored Messages Rules (Part 3)
+
+| Condition | Behaviour |
+|-----------|-----------|
+| Search by recipient | Returns sent and stored messages for that number. Disregarded messages are not included. |
+| Delete by hash | Works on stored messages. Use the report (option f) to see the hash of each stored message. |
+| Hash, ID or recipient not found | The app shows a "not found" message instead of crashing. |
+| Invalid choice when sending | The message is recorded as disregarded so it is not lost. |
 
 ---
 
 ##  Storing Messages as JSON
 
-When the user chooses **Store Message to send later**, the message is added to `messages.json` in the project folder. The file is a valid JSON array and the whole file is rewritten each time, so each program run starts with a fresh file. Only stored messages go into the file. Messages that are sent are shown on screen at the end, and disregarded messages are not kept.
+When the user chooses **Store Message to send later**, the message is added to `messages.json` in the project folder. The file is a valid JSON array and the whole file is rewritten from the arrays each time, so it always matches the stored messages in memory. Only stored messages go into the file. Messages that are sent are shown on screen at the end, and disregarded messages are not kept.
+
+When the user logs in, the file is read back into the arrays (Part 3), so stored messages from a previous run are loaded. When a stored message is deleted, the file is rewritten so the message does not come back.
 
 Example of what the file looks like:
 
@@ -374,7 +470,21 @@ Example of what the file looks like:
 ```
 <img width="1352" height="1078" alt="image" src="https://github.com/user-attachments/assets/fa26a6e6-92ac-4b27-8b0b-2037d4848565" />
 
-Quotes and backslashes inside a message are escaped so they cannot break the JSON.
+Quotes and backslashes inside a message are escaped so they cannot break the JSON, and they are unescaped again when the file is read.
+
+---
+
+##  Part 3 – Stored Messages Menu
+
+| Option | What it does |
+|--------|--------------|
+| **a** | Displays the sender and the recipient of every stored message |
+| **b** | Displays the longest stored message |
+| **c** | Searches for a message ID and displays the recipient and message |
+| **d** | Searches for all the sent and stored messages for a particular recipient |
+| **e** | Deletes a stored message using its message hash |
+| **f** | Displays a report with the ID, hash, recipient and message of the sent and stored messages |
+| **g** | Goes back to the main menu |
 
 ---
 ### References
@@ -388,6 +498,10 @@ Quotes and backslashes inside a message are escaped so they cannot break the JSO
 - Farrell, J. (2024) Java Programming. 10th edn. Course Technology, Cengage Learning.
 
 - GeeksforGeeks. (2026) Regular Expressions in Java. Available at: https://www.geeksforgeeks.org/regular-expressions-in-java/ (Accessed: 20 August 2026).
+
+- GeeksforGeeks. (2026) Java Read File. Available at: https://www.geeksforgeeks.org/different-ways-reading-text-file-java/ (Accessed: 20 October 2026).
+
+<!-- TODO: add the source you used for the password regex in Login.java (author, year, title, URL, access date) -->
 
 - GitHub. (2026) GitHub Documentation. Available at: https://docs.github.com/ (Accessed: 20 August 2026).
 
@@ -436,6 +550,16 @@ https://youtu.be/FY2LNRlOIKI
 
 https://youtu.be/2U3F6mGnfsQ
 
+**Part 3 – Store Data and Display Task Report**
+
+-  Explanation of the parallel arrays and how the same index keeps each message's details together
+-  Demonstration of reading `messages.json` back into the arrays when the app starts
+-  Demonstration of the Stored Messages menu: sender and recipient, longest message, search by ID, search by recipient, delete by hash and the report
+-  Showing that deleting a stored message also updates `messages.json`
+-  Running and explaining the unit tests and the GitHub Actions run
+
+[add your Part 3 video link]
+
 ---
 
 ##  Disclaimer
@@ -455,5 +579,5 @@ If you have any questions about this project, please contact:
 ---
 
 
-**© 2026 – PROG5121 Chat App (Part 1 and Part 2)**  
+**© 2026 – PROG5121 Chat App (Part 1, Part 2 and Part 3)**  
 *All rights reserved.*
