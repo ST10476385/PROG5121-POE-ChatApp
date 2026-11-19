@@ -19,7 +19,10 @@ public class LoginTest   {
 
     // It tests if Username correctly formatted (kyl_1): should result in successful registration and login
     @Test
-    public void testUsernameCorrectlyFormatted_Flow() {
+    public void testUsernameCorrectlyFormatted_Flow() 
+    
+    
+    {
         Login login = new Login();
         
         String regMsg = login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976", "John", "Doe");
@@ -32,7 +35,9 @@ public class LoginTest   {
 
     // It tests if Username incorrectly formatted (kyle!!!!!!!):should return the error message
     @Test
-    public void testUsernameIncorrectlyFormatted() {
+    public void testUsernameIncorrectlyFormatted()
+    
+    {
         Login login = new Login();
         String msg = login.registerUser("kyle!!!!!!!", "Ch&&sec@ke99!", "+27838968976", "John", "Doe");
         assertEquals("Username is not correctly formatted; please ensure that your username "
@@ -44,10 +49,11 @@ public class LoginTest   {
 
     // It tests if Password meets complexity requirements (Ch&&sec@ke99!) :should return success message
     @Test
-    public void testPasswordMeetsComplexity() {
+    public void testPasswordMeetsComplexity()
+    
+    {
         Login login = new Login();
         
-        // @citation: Smith, J. (2023) Java Regex Tutorial. Available at: https://example.com/java-regex (Accessed: 20 August 2026).
 // Tests a valid password through registration and directly verifies password complexity.
 // The Login class does not provide a separate password message method.
         Login login2 = new Login();
@@ -100,7 +106,9 @@ public class LoginTest   {
 
     // It tests if Login Successful (correct credentials)
     @Test
-    public void testLoginSuccessful() {
+    public void testLoginSuccessful()
+    
+    {
         Login login = new Login();
         
         login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976", "John", "Doe");
@@ -109,7 +117,9 @@ public class LoginTest   {
 
     // It tests if Login Failed (wrong password)
     @Test
-    public void testLoginFailed() {
+    public void testLoginFailed()
+    
+    {
         Login login = new Login();
         
         
@@ -127,14 +137,18 @@ public class LoginTest   {
 
     // It tests if Username incorrectly formatted (kyle!!!!!!!) : false
     @Test
-    public void testUsernameIncorrectlyFormatted_Boolean() {
+    public void testUsernameIncorrectlyFormatted_Boolean()
+    
+    {
         Login login = new Login();
         assertFalse(login.checkUserName("kyle!!!!!!!"));
     }
 
     // It tests if Password meets complexity requirements (Ch&&sec@ke99!) : true
     @Test
-    public void testPasswordMeetsComplexity_Boolean() {
+    public void testPasswordMeetsComplexity_Boolean()
+    
+    {
         Login login = new Login();
         
         assertTrue(login.checkPasswordComplexity("Ch&&sec@ke99!"));
